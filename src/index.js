@@ -2,12 +2,16 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 
-import { BrowserRouter } from 'react-router-dom';
-import { UserProvider } from './contexts/user.context';
-import { CategoriesProvider } from './contexts/categories.context';
-import { CartProvider } from './contexts/cart.context';
+import { BrowserRouter } from "react-router-dom";
 
-import './index.scss';
+import { UserProvider } from "./contexts/user.context";
+import { CategoriesProvider } from "./contexts/categories.context";
+import { CartProvider } from "./contexts/cart.context";
+
+import { Elements } from "@stripe/react-stripe-js";
+import { stripePromise } from "./utils/stripe/stripe.utils"; 
+
+import "./index.scss";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -16,10 +20,12 @@ root.render(
       <UserProvider>
         <CategoriesProvider>
           <CartProvider>
-            <App />
+            <Elements stripe={stripePromise}>
+              <App />
+            </Elements>
           </CartProvider>
         </CategoriesProvider>
       </UserProvider>
     </BrowserRouter>
-  </React.StrictMode>,
+  </React.StrictMode>
 );

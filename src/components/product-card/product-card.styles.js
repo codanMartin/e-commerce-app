@@ -21,6 +21,7 @@ export const ProductCartContainer = styled.div`
     position: absolute;
     top: 255px;
     display: none;
+    font-size: 80%;
   }
 
   &:hover {
@@ -31,7 +32,6 @@ export const ProductCartContainer = styled.div`
     button {
       opacity: 0.85;
       display: flex;
-      font-size: 80%;
     }
   }
 `;
